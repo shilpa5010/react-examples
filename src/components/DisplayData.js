@@ -2,11 +2,10 @@
 
 import React, { useState } from 'react';
 import StudentForm from './ContactUs';
-import jsonData from '../data.json';
+import jsonData from '../db.json';
 
 function TableData() {
-    const [Data, setData] = useState(jsonData);
-
+    const [Data, setData] = useState(jsonData.contacts);
     const tableRows = Data.map((info) => {
         return (
             <tr>

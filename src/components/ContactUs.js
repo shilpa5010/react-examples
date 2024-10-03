@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-//import Display from './DisplayData'
-
 export default function ContactUs(props) {
     const [inputs, setInputs] = useState("")
 
@@ -36,7 +34,6 @@ export default function ContactUs(props) {
                 <button type='submit' name='Contact'>Enter</button>
             </label>
         </form>
-        {/*<Display />*/}
         </div>
     )
 }

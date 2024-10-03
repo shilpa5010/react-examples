@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bd-form {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -15px 0;
+    margin-right: -15px;
+    margin-left: -15px;
+  border: solid #f8f9fa;
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+  border-width: .2rem 0 0;
+}
+
+.bd-form::after {
+  display: block;
+
+  clear: both;
+
+  content: "";
+
+}

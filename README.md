@@ -33,7 +33,33 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### React Router  - Refer https://www.w3schools.com/react/react_router.asp
 npm i -D react-router-dom 
 
+### Axios
+npm install axios
 
+### Bootstrap
+npm install bootstrap
+
+### Json Server
+npm install json-server
+
+### 
+Open Terminal for Json Server it is on 3000 port:
+my-react-listings git:(main) ✗ json-server --watch src/db.json 
+--watch/-w can be omitted, JSON Server 1+ watches for file changes by default
+JSON Server started on PORT :3000
+Press CTRL-C to stop
+Watching src/db.json...
+
+♡⸜(˶˃ ᵕ ˂˶)⸝♡
+
+Index:
+http://localhost:3000/
+
+Static files:
+Serving ./public directory if it exists
+
+Endpoints:
+http://localhost:3000/contacts
 
 
 ## Learn More
