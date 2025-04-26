@@ -25,7 +25,7 @@ pipeline {
       }
     }
 
-    stage('Package') {
+    stage('Package (Optional)') {
       steps {
         sh 'zip -r app.zip *'
       }
@@ -34,7 +34,8 @@ pipeline {
     stage('Deploy to S3') {
       steps {
         withAWS(region: "${AWS_REGION}", credentials: 'AWS') {
-          s3Upload(bucket: "${S3_BUCKET}", file: 'app.zip', path: 'deployments/app.zip')
+          // Upload unzipped contents to S3 bucket root (or choose a subfolder)
+          s3Upload(bucket: "${S3_BUCKET}", workingDir: '.', includePathPattern: '**/*')
         }
       }
     }
