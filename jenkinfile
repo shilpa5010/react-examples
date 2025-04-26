@@ -1,0 +1,51 @@
+pipeline {
+  agent any
+
+  environment {
+    AWS_REGION = 'eu-west-2'
+    S3_BUCKET = 's3-jenkins-docker-992382459829'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', url: 'https://github.com/shilpa5010/react-examples.git'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'echo "Running tests (you can add real tests here)"'
+      }
+    }
+
+    stage('Package') {
+      steps {
+        sh 'zip -r app.zip *'
+      }
+    }
+
+    stage('Deploy to S3') {
+      steps {
+        withAWS(region: "${AWS_REGION}", credentials: 'aws-jenkins-credentials') {
+          s3Upload(bucket: "${S3_BUCKET}", file: 'app.zip', path: 'deployments/app.zip')
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      echo 'Deployment Successful!'
+    }
+    failure {
+      echo 'Deployment Failed!'
+    }
+  }
+}
