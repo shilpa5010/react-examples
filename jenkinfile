@@ -33,7 +33,7 @@ pipeline {
 
     stage('Deploy to S3') {
       steps {
-        withAWS(region: "${AWS_REGION}", credentials: 'aws-jenkins-credentials') {
+        withAWS(region: "${AWS_REGION}", credentials: 'AWS') {
           s3Upload(bucket: "${S3_BUCKET}", file: 'app.zip', path: 'deployments/app.zip')
         }
       }
