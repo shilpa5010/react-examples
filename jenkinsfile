@@ -37,11 +37,11 @@ pipeline {
       }
     }
 
-    stage('Deploy to S3') {
+   stage('Deploy to S3') {
       steps {
         withAWS(region: "${AWS_REGION}", credentials: 'AWS') {
-          // Upload unzipped contents to S3 bucket root (or choose a subfolder)
-          s3Upload(bucket: "${S3_BUCKET}", workingDir: '.', includePathPattern: '**/*')
+          // Upload only the build folder contents
+          s3Upload(bucket: "${S3_BUCKET}", workingDir: 'build', includePathPattern: '**/*')
         }
       }
     }
